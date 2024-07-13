@@ -1,15 +1,11 @@
 import { getMailClient } from "@/lib/nodemailer";
 import { prisma } from "@/lib/prisma";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-import "dayjs/locale/pt-br";
+import { dayjs } from "@/lib/dayjs";
+
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import nodemailer from "nodemailer";
-
-dayjs.locale("pt-br");
-dayjs.extend(localizedFormat);
 
 export async function createTrip(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post(
